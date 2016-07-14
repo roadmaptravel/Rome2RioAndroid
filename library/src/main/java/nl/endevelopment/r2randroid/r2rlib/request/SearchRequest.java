@@ -140,4 +140,108 @@ public class SearchRequest {
     public void setNoStop(boolean noStop) {
         this.noStop = noStop;
     }
+
+    public String getKey() {
+        return key;
+    }
+
+    public String getoName() {
+        return oName;
+    }
+
+    public String getdName() {
+        return dName;
+    }
+
+    public Position getoPos() {
+        return oPos;
+    }
+
+    public Position getdPos() {
+        return dPos;
+    }
+
+    public String getoKind() {
+        return oKind;
+    }
+
+    public String getdKind() {
+        return dKind;
+    }
+
+    public String getCurrencyCode() {
+        return currencyCode;
+    }
+
+    public String getLanguageCode() {
+        return languageCode;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public boolean isNoAir() {
+        return noAir;
+    }
+
+    public boolean isNoAirLeg() {
+        return noAirLeg;
+    }
+
+    public boolean isNoRail() {
+        return noRail;
+    }
+
+    public boolean isNoBus() {
+        return noBus;
+    }
+
+    public boolean isNoFerry() {
+        return noFerry;
+    }
+
+    public boolean isNoCar() {
+        return noCar;
+    }
+
+    public boolean isNoBikeshare() {
+        return noBikeshare;
+    }
+
+    public boolean isNoRideshare() {
+        return noRideshare;
+    }
+
+    public boolean isNoTowncar() {
+        return noTowncar;
+    }
+
+    public boolean isNoCommuter() {
+        return noCommuter;
+    }
+
+    public boolean isNoSpecial() {
+        return noSpecial;
+    }
+
+    public boolean isNoMinorStart() {
+        return noMinorStart;
+    }
+
+    public boolean isNoMinorEnd() {
+        return noMinorEnd;
+    }
+
+    public boolean isNoPath() {
+        return noPath;
+    }
+
+    public boolean isNoPrice() {
+        return noPrice;
+    }
+
+    public boolean isNoStop() {
+        return noStop;
+    }
 }
