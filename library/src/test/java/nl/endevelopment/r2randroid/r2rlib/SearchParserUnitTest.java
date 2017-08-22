@@ -7,7 +7,6 @@ import java.io.IOException;
 
 import nl.endevelopment.r2randroid.r2rlib.models.Position;
 import nl.endevelopment.r2randroid.r2rlib.parser.SearchParser;
-import nl.endevelopment.r2randroid.r2rlib.request.Rome2RioRequest;
 import nl.endevelopment.r2randroid.r2rlib.request.SearchRequest;
 import retrofit2.Call;
 import retrofit2.Response;
