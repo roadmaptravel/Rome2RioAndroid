@@ -3,6 +3,7 @@ package nl.endevelopment.r2randroid.rome2rioandroid;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final TextView textView = (TextView) findViewById(R.id.text);
+
         String key = getString(R.string.apikey);
         Rome2RioService service = new Rome2RioApiClient(this, key).getService();
 
@@ -31,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 .noBus(true)
                 .build();
 
-        service.getSearchResponseRx(searchRequest.toQueryMap())
+        service.getSearchResponseRx(searchRequest.toUrl())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<SearchResponse>() {
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onNext(SearchResponse searchResponse) {
                         Log.d(TAG, "onNext() called with: searchResponse = [" + searchResponse + "]");
+                        textView.setText(searchResponse.toString());
 
                     }
 

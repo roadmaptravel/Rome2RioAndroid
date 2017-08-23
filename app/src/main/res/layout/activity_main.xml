@@ -6,4 +6,15 @@
     android:layout_height="match_parent"
     tools:context="nl.endevelopment.r2randroid.rome2rioandroid.MainActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/text"/>
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

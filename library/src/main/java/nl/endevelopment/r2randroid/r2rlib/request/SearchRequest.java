@@ -1,8 +1,5 @@
 package nl.endevelopment.r2randroid.r2rlib.request;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import nl.endevelopment.r2randroid.r2rlib.models.Position;
 
 /**
@@ -268,48 +265,44 @@ public class SearchRequest {
         return noStop;
     }
 
-    /**
-     * private String oName;
-     * private String dName;
-     * private Position oPos;
-     * private Position dPos;
-     * private String oKind;
-     * private String dKind;
-     * private String currencyCode;
-     * private String languageCode;
-     * private String data;
-     * private boolean noAir;
-     * private boolean noAirLeg;
-     * private boolean noRail;
-     * private boolean noBus;
-     * private boolean noFerry;
-     * private boolean noCar;
-     * private boolean noBikeshare;
-     * private boolean noRideshare;
-     * private boolean noTowncar;
-     * private boolean noCommuter;
-     * private boolean noSpecial;
-     * private boolean noMinorStart;
-     * private boolean noMinorEnd;
-     * private boolean noPath;
-     * private boolean noPrice;
-     * private boolean noStop;
-     *
-     * @return
-     */
-    public Map<String, String> toQueryMap() {
-        Map<String, String> map = new HashMap<>();
-        if (oName != null) map.put("oName", oName);
-        if (dName != null) map.put("dName", dName);
-        if (oPos != null) map.put("oPos", oPos.getLatitude() + "," + oPos.getLongitude());
-        if (dPos != null) map.put("dPos", dPos.getLatitude() + "," + dPos.getLongitude());
-        if (oKind != null) map.put("oKind", oKind);
-        if (dKind != null) map.put("dKind", dKind);
-        if (currencyCode != null) map.put("currencyCode", currencyCode);
-        if (languageCode != null) map.put("languageCode", languageCode);
-        if (data != null) map.put("data", data);
 
-        return map;
+    /**
+     * create the url with query params
+     * dont make use of the retrofit query params because of the custom boolean params of rome2rio e.g. noAir
+     *
+     * @return url String
+     */
+    public String toUrl() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Search?");
+        if (oName != null) sb.append("&oName=").append(oName);
+        if (dName != null) sb.append("&dName=").append(dName);
+        if (oPos != null)
+            sb.append("&oPos=").append(oPos.getLatitude()).append(",").append(oPos.getLongitude());
+        if (dPos != null)
+            sb.append("&dPos=").append(dPos.getLatitude()).append(",").append(dPos.getLongitude());
+        if (oKind != null) sb.append("&oKind=").append(oKind);
+        if (dKind != null) sb.append("&dKind=").append(dKind);
+        if (currencyCode != null) sb.append("&currencyCode=").append(currencyCode);
+        if (languageCode != null) sb.append("&languageCode=").append(languageCode);
+        if (data != null) sb.append("&data=").append(data);
+        if (noAir) sb.append("&noAir");
+        if (noAirLeg) sb.append("&noAirLeg");
+        if (noRail) sb.append("&noRail");
+        if (noBus) sb.append("&noBus");
+        if (noFerry) sb.append("&noFerry");
+        if (noCar) sb.append("&noCar");
+        if (noBikeshare) sb.append("&noBikeshare");
+        if (noRideshare) sb.append("&noRideshare");
+        if (noTowncar) sb.append("&noTowncar");
+        if (noCommuter) sb.append("&noCommuter");
+        if (noSpecial) sb.append("&noSpecial");
+        if (noMinorEnd) sb.append("&noMinorEnd");
+        if (noPath) sb.append("&noPath");
+        if (noPrice) sb.append("&noPrice");
+        if (noStop) sb.append("&noStop");
+
+        return sb.toString();
     }
 
 

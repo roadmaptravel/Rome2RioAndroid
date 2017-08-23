@@ -190,4 +190,20 @@ public class SearchResponse implements Parcelable {
             return new SearchResponse[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "SearchResponse{" +
+                "elapsedTime='" + elapsedTime + '\'' +
+                ", currencyCode='" + currencyCode + '\'' +
+                ", languageCode='" + languageCode + '\'' +
+                ", data='" + data + '\'' +
+                ", places=" + places +
+                ", airlines=" + airlines +
+                ", aircrafts=" + aircrafts +
+                ", agencies=" + agencies +
+                ", routes=" + routes +
+                ", vehicles=" + vehicles +
+                '}';
+    }
 }

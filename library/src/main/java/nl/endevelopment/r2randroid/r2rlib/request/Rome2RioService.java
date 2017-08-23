@@ -1,12 +1,10 @@
 package nl.endevelopment.r2randroid.r2rlib.request;
 
-import java.util.Map;
-
 import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-import retrofit2.http.QueryMap;
+import retrofit2.http.Url;
 
 /**
  * Created by jan on 14/07/16.
@@ -22,6 +20,6 @@ public interface Rome2RioService {
             @Path("oPosLat") double oPosLat, @Path("oPosLng") double oPosLng,
             @Path("dPosLat") double dPosLat, @Path("dPosLng") double dPosLng);
 
-    @GET("Search")
-    Observable<SearchResponse> getSearchResponseRx(@QueryMap Map<String, String> map);
+    @GET
+    Observable<SearchResponse> getSearchResponseRx(@Url String url);
 }
