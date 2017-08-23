@@ -379,17 +379,17 @@ public class SearchRequest {
         }
 
         public SearchRequestBuilder noAir() {
-            this.noAir = noAir;
+            this.noAir = true;
             return this;
         }
 
         public SearchRequestBuilder noAirLeg() {
-            this.noAirLeg = noAirLeg;
+            this.noAirLeg = true;
             return this;
         }
 
         public SearchRequestBuilder noRail() {
-            this.noRail = noRail;
+            this.noRail = true;
             return this;
         }
 
