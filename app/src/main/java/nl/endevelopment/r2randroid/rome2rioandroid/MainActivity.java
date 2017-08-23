@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
         SearchRequest searchRequest = new SearchRequest.SearchRequestBuilder()
                 .oName("Delft")
                 .dName("Rotterdam")
-                .noBus(true)
+                .noBus()
+                .noCar()
                 .build();
 
         service.getSearchResponseRx(searchRequest.toUrl())

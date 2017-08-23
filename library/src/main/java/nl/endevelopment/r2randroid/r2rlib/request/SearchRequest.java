@@ -378,83 +378,83 @@ public class SearchRequest {
             return this;
         }
 
-        public SearchRequestBuilder noAir(boolean noAir) {
+        public SearchRequestBuilder noAir() {
             this.noAir = noAir;
             return this;
         }
 
-        public SearchRequestBuilder noAirLeg(boolean noAirLeg) {
+        public SearchRequestBuilder noAirLeg() {
             this.noAirLeg = noAirLeg;
             return this;
         }
 
-        public SearchRequestBuilder noRail(boolean noRail) {
+        public SearchRequestBuilder noRail() {
             this.noRail = noRail;
             return this;
         }
 
-        public SearchRequestBuilder noBus(boolean noBus) {
-            this.noBus = noBus;
+        public SearchRequestBuilder noBus() {
+            this.noBus = true;
             return this;
         }
 
         public SearchRequestBuilder noFerry(boolean noFerry) {
-            this.noFerry = noFerry;
+            this.noFerry = true;
             return this;
         }
 
-        public SearchRequestBuilder noCar(boolean noCar) {
-            this.noCar = noCar;
+        public SearchRequestBuilder noCar() {
+            this.noCar = true;
             return this;
         }
 
-        public SearchRequestBuilder noBikeshare(boolean noBikeshare) {
-            this.noBikeshare = noBikeshare;
+        public SearchRequestBuilder noBikeshare() {
+            this.noBikeshare = true;
             return this;
         }
 
-        public SearchRequestBuilder noRideshare(boolean noRideshare) {
-            this.noRideshare = noRideshare;
+        public SearchRequestBuilder noRideshare() {
+            this.noRideshare = true;
             return this;
         }
 
-        public SearchRequestBuilder noTowncar(boolean noTowncar) {
-            this.noTowncar = noTowncar;
+        public SearchRequestBuilder noTowncar() {
+            this.noTowncar = true;
             return this;
         }
 
-        public SearchRequestBuilder noCommuter(boolean noCommuter) {
-            this.noCommuter = noCommuter;
+        public SearchRequestBuilder noCommuter() {
+            this.noCommuter = true;
             return this;
         }
 
-        public SearchRequestBuilder noSpecial(boolean noSpecial) {
-            this.noSpecial = noSpecial;
+        public SearchRequestBuilder noSpecial() {
+            this.noSpecial = true;
             return this;
         }
 
-        public SearchRequestBuilder noMinorStart(boolean noMinorStart) {
-            this.noMinorStart = noMinorStart;
+        public SearchRequestBuilder noMinorStart() {
+            this.noMinorStart = true;
             return this;
         }
 
-        public SearchRequestBuilder noMinorEnd(boolean noMinorEnd) {
-            this.noMinorEnd = noMinorEnd;
+        public SearchRequestBuilder noMinorEnd() {
+            this.noMinorEnd = true;
             return this;
         }
 
-        public SearchRequestBuilder noPath(boolean noPath) {
-            this.noPath = noPath;
+        public SearchRequestBuilder noPath() {
+            this.noPath = true;
             return this;
         }
 
-        public SearchRequestBuilder noPrice(boolean noPrice) {
-            this.noPrice = noPrice;
+        public SearchRequestBuilder noPrice() {
+            this.noPrice = true;
             return this;
         }
 
-        public SearchRequestBuilder noStop(boolean noStop) {
-            this.noStop = noStop;
+        public SearchRequestBuilder noStop() {
+            this.noStop = true;
             return this;
         }
 
