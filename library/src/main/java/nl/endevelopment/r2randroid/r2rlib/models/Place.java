@@ -3,49 +3,74 @@ package nl.endevelopment.r2randroid.r2rlib.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /**
- * Created by Glenn on 09-07-15.
+ * Created by Jan on 23-09-17.
  * class for api v1.4
  * https://www.rome2rio.com/documentation/search#Place
  */
 public class Place implements Parcelable {
 
     /**
-     lat 	    float 	Latitude (WGS84)
-     lng 	    float 	Longitude (WGS84)
-     kind 	    string 	Type of place [1]
-     shortName 	string 	Display name
-     code 	    string 	Airport or Station code (eg: IATA)
-     regionCode string 	Region code (ISO 3166-2 or FIPS) (optional)
-     countryCodestring 	Country code (ISO 3166-1 alpha-2) (optional)
-     timeZone 	string 	Time zone (IANA) (optional)
+     * lat 	    float 	Latitude (WGS84)
+     * lng 	    float 	Longitude (WGS84)
+     * kind 	    string 	Type of place [1]
+     * shortName 	string 	Display name
+     * code 	    string 	Airport or Station code (eg: IATA)
+     * regionCode string 	Region code (ISO 3166-2 or FIPS) (optional)
+     * countryCodestring 	Country code (ISO 3166-1 alpha-2) (optional)
+     * timeZone 	string 	Time zone (IANA) (optional)
      */
 
-    private float lat;
-    private float lng;
+    @SerializedName("lat")
+    @Expose
+    private Double lat;
+    @SerializedName("lng")
+    @Expose
+    private Double lng;
+    @SerializedName("kind")
+    @Expose
     private String kind;
+    @SerializedName("shortName")
+    @Expose
     private String shortName;
-    private String code;
-    private String countryCode;
+    @SerializedName("longName")
+    @Expose
+    private String longName;
+    @SerializedName("canonicalName")
+    @Expose
+    private String canonicalName;
+    @SerializedName("regionCode")
+    @Expose
     private String regionCode;
+    @SerializedName("countryCode")
+    @Expose
+    private String countryCode;
+    @SerializedName("timeZone")
+    @Expose
     private String timeZone;
+    @SerializedName("code")
+    @Expose
+    private String code;
 
     public Place() {
     }
 
-    public float getLat() {
+    public Double getLat() {
         return lat;
     }
 
-    public void setLat(float lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
     }
 
-    public float getLng() {
+    public Double getLng() {
         return lng;
     }
 
-    public void setLng(float lng) {
+    public void setLng(Double lng) {
         this.lng = lng;
     }
 
@@ -65,20 +90,20 @@ public class Place implements Parcelable {
         this.shortName = shortName;
     }
 
-    public String getCode() {
-        return code;
+    public String getLongName() {
+        return longName;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setLongName(String longName) {
+        this.longName = longName;
     }
 
-    public String getCountryCode() {
-        return countryCode;
+    public String getCanonicalName() {
+        return canonicalName;
     }
 
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
+    public void setCanonicalName(String canonicalName) {
+        this.canonicalName = canonicalName;
     }
 
     public String getRegionCode() {
@@ -89,6 +114,14 @@ public class Place implements Parcelable {
         this.regionCode = regionCode;
     }
 
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
+    }
+
     public String getTimeZone() {
         return timeZone;
     }
@@ -97,32 +130,49 @@ public class Place implements Parcelable {
         this.timeZone = timeZone;
     }
 
-    protected Place(Parcel in) {
-        lat = in.readFloat();
-        lng = in.readFloat();
-        kind = in.readString();
-        shortName = in.readString();
-        code = in.readString();
-        countryCode = in.readString();
-        regionCode = in.readString();
-        timeZone = in.readString();
+    public String getCode() {
+        return code;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    protected Place(Parcel in) {
+        lat = in.readByte() == 0x00 ? null : in.readDouble();
+        lng = in.readByte() == 0x00 ? null : in.readDouble();
+        kind = in.readString();
+        shortName = in.readString();
+        longName = in.readString();
+        canonicalName = in.readString();
+        regionCode = in.readString();
+        countryCode = in.readString();
+        timeZone = in.readString();
+        code = in.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeFloat(lat);
-        dest.writeFloat(lng);
+        if (lat == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeDouble(lat);
+        }
+        if (lng == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeDouble(lng);
+        }
         dest.writeString(kind);
         dest.writeString(shortName);
-        dest.writeString(code);
-        dest.writeString(countryCode);
+        dest.writeString(longName);
+        dest.writeString(canonicalName);
         dest.writeString(regionCode);
+        dest.writeString(countryCode);
         dest.writeString(timeZone);
+        dest.writeString(code);
     }
 
     @SuppressWarnings("unused")
@@ -137,4 +187,25 @@ public class Place implements Parcelable {
             return new Place[size];
         }
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Place{" +
+                "lat=" + lat +
+                ", lng=" + lng +
+                ", kind='" + kind + '\'' +
+                ", shortName='" + shortName + '\'' +
+                ", longName='" + longName + '\'' +
+                ", canonicalName='" + canonicalName + '\'' +
+                ", regionCode='" + regionCode + '\'' +
+                ", countryCode='" + countryCode + '\'' +
+                ", timeZone='" + timeZone + '\'' +
+                ", code='" + code + '\'' +
+                '}';
+    }
 }
