@@ -2,10 +2,15 @@ package nl.endevelopment.r2randroid.r2rlib.request;
 
 import android.content.Context;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.io.IOException;
 
+import nl.endevelopment.r2randroid.r2rlib.models.DayFlags;
+import nl.endevelopment.r2randroid.r2rlib.parser.BooleanParser;
+import nl.endevelopment.r2randroid.r2rlib.parser.DayFlagsParser;
 import nl.endevelopment.r2randroid.r2rlib.utils.ConnectionUtils;
 import okhttp3.Cache;
 import okhttp3.HttpUrl;
@@ -29,7 +34,7 @@ public class Rome2RioApiClient {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(API_URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(getGsonConverterFactory())
                 .client(getClient(key))
                 .build();
 
@@ -78,6 +83,23 @@ public class Rome2RioApiClient {
                 .build();
 
         return client;
+    }
+
+
+    /**
+     * get gson converter factory
+     * register type adapters here
+     * @return GsonConverterFactory
+     */
+    public GsonConverterFactory getGsonConverterFactory(){
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Boolean.class, new BooleanParser())
+                .registerTypeAdapter(DayFlags.class, new DayFlagsParser())
+                .create();
+
+        GsonConverterFactory factory = GsonConverterFactory.create(gson);
+
+        return factory;
     }
 
 

@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         SearchRequest searchRequest = new SearchRequest.SearchRequestBuilder()
                 .oName("Delft")
-                .dName("Rotterdam")
+                .dName("London")
                 .noBus()
                 .noCar()
                 .build();

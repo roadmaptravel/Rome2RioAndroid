@@ -99,4 +99,13 @@ public class AirLeg implements Parcelable {
             return new AirLeg[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "AirLeg{" +
+                "operatingDays=" + operatingDays +
+                ", indicativePrices=" + indicativePrices +
+                ", hops=" + hops +
+                '}';
+    }
 }
