@@ -3,6 +3,8 @@ package nl.endevelopment.r2randroid.r2rlib.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import nl.endevelopment.r2randroid.r2rlib.enums.VehicleKind;
+
 /**
  * Created by jan on 11/07/16.
  *
@@ -37,6 +39,10 @@ public class Vehicle implements Parcelable {
 
     public String getKind() {
         return kind;
+    }
+
+    public VehicleKind getVehicleKind(){
+        return VehicleKind.fromString(getKind());
     }
 
     public void setKind(String kind) {

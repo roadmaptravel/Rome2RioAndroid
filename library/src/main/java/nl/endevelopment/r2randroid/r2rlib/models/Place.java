@@ -6,6 +6,8 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import nl.endevelopment.r2randroid.r2rlib.enums.PlaceKind;
+
 /**
  * Created by Jan on 23-09-17.
  * class for api v1.4
@@ -76,6 +78,11 @@ public class Place implements Parcelable {
 
     public String getKind() {
         return kind;
+    }
+
+    //get enum type
+    public PlaceKind getPlaceKind(){
+        return PlaceKind.fromString(getKind());
     }
 
     public void setKind(String kind) {

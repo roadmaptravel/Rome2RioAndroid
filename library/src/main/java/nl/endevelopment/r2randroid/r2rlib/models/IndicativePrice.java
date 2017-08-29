@@ -4,7 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- *
+ *If the estimated price is a single value (not a range) then only price is returned.
+ If the estimated price is a range, then both price and priceLow/priceHigh are returned.
+ You can choose to display either the single price (for brevity) or the range (for accuracy).
  */
 public class IndicativePrice implements Parcelable {
 
