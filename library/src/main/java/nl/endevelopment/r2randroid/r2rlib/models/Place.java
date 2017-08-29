@@ -26,10 +26,10 @@ public class Place implements Parcelable {
 
     @SerializedName("lat")
     @Expose
-    private Double lat;
+    private float lat;
     @SerializedName("lng")
     @Expose
-    private Double lng;
+    private float lng;
     @SerializedName("kind")
     @Expose
     private String kind;
@@ -58,19 +58,19 @@ public class Place implements Parcelable {
     public Place() {
     }
 
-    public Double getLat() {
+    public float getLat() {
         return lat;
     }
 
-    public void setLat(Double lat) {
+    public void setLat(float lat) {
         this.lat = lat;
     }
 
-    public Double getLng() {
+    public float getLng() {
         return lng;
     }
 
-    public void setLng(Double lng) {
+    public void setLng(float lng) {
         this.lng = lng;
     }
 
@@ -139,8 +139,8 @@ public class Place implements Parcelable {
     }
 
     protected Place(Parcel in) {
-        lat = in.readByte() == 0x00 ? null : in.readDouble();
-        lng = in.readByte() == 0x00 ? null : in.readDouble();
+        lat = in.readFloat();
+        lng = in.readFloat();
         kind = in.readString();
         shortName = in.readString();
         longName = in.readString();
@@ -153,18 +153,8 @@ public class Place implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        if (lat == null) {
-            dest.writeByte((byte) (0x00));
-        } else {
-            dest.writeByte((byte) (0x01));
-            dest.writeDouble(lat);
-        }
-        if (lng == null) {
-            dest.writeByte((byte) (0x00));
-        } else {
-            dest.writeByte((byte) (0x01));
-            dest.writeDouble(lng);
-        }
+        dest.writeFloat(lat);
+        dest.writeFloat(lng);
         dest.writeString(kind);
         dest.writeString(shortName);
         dest.writeString(longName);

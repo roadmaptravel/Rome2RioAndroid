@@ -1,6 +1,5 @@
 package nl.endevelopment.r2randroid.r2rlib.models;
 
-import android.graphics.Path;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -9,8 +8,6 @@ import java.util.List;
 
 /**
  * Created by jan on 11/07/16.
- *
- * todo check parcelabler implementation
  */
 
 public class SurfaceSegment extends Segment implements Parcelable {
@@ -29,22 +26,17 @@ public class SurfaceSegment extends Segment implements Parcelable {
     agencies 	        SurfaceAgency[] 	Array of agencies
      */
 
-    private Path path;
+    private String path;
     private List<SurfaceStop> stops;
     private List<SurfaceAgency> agencies;
 
     public SurfaceSegment(){}
 
-    @Override
-    public String getSegmentKind(){
-        return "surface";
-    }
-
-    public Path getPath() {
+    public String getPath() {
         return path;
     }
 
-    public void setPath(Path path) {
+    public void setPath(String path) {
         this.path = path;
     }
 
@@ -65,7 +57,7 @@ public class SurfaceSegment extends Segment implements Parcelable {
     }
 
     protected SurfaceSegment(Parcel in) {
-        path = (Path) in.readValue(Path.class.getClassLoader());
+        path = in.readString();
         if (in.readByte() == 0x01) {
             stops = new ArrayList<SurfaceStop>();
             in.readList(stops, SurfaceStop.class.getClassLoader());
@@ -87,7 +79,7 @@ public class SurfaceSegment extends Segment implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeValue(path);
+        dest.writeString(path);
         if (stops == null) {
             dest.writeByte((byte) (0x00));
         } else {

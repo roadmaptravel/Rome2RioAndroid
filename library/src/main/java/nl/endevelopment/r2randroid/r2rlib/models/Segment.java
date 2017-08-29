@@ -3,41 +3,52 @@ package nl.endevelopment.r2randroid.r2rlib.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * https://www.rome2rio.com/documentation/search#Segment
  */
 public class Segment implements Parcelable {
 
     /**
-     segmentKind 	string 	"air"
-     depPlace 	integer 	Departure airport (index into places array)
-     arrPlace 	integer 	Arrival airport (index into places array)
-     vehicle 	integer 	Vehicle (index into vehicles array)
-     distance 	float 	Estimated distance (in km)
-     transitDuration 	float 	Estimated duration spent in transit (in minutes)
-     transferDuration 	float 	Estimated duration spent waiting for transfer (in minutes)
-     indicativePrices 	IndicativePrice[] 	Array of indicative prices (optional)
-     outbound 	AirLeg[] 	Array of outbound legs
-     return 	AirLeg[] 	Array of return legs
+     * segmentKind	string	Segment kind [1]
+     * depPlace	integer	Departure airport (index into places array)
+     * arrPlace	integer	Arrival airport (index into places array)
+     * vehicle	integer	Vehicle (index into vehicles array)
+     * distance	float	Estimated distance (in km)
+     * transitDuration	float	Estimated duration spent in transit (in minutes)
+     * transferDuration	float	Estimated duration spent waiting for transfer (in minutes)
+     * indicativePrices	IndicativePrice[]	Array of indicative prices (optional)
      */
 
+    @SerializedName("segmentKind")
+    @Expose
     private String segmentKind; //e.g. "air"
-    private int depPlace; //Departure airport (index into places array)
-    private int arrPlace; //Arrival airport (index into places array)
-    private int vehicle;  //Vehicle (index into vehicles array)
-    private float distance; //Estimated distance (in km)
+    @SerializedName("depPlace")
+    @Expose
+    private int depPlace;//Departure airport (index into places array)
+    @SerializedName("arrPlace")
+    @Expose
+    private int arrPlace;//Arrival airport (index into places array)
+    @SerializedName("vehicle")
+    @Expose
+    private int vehicle;//Vehicle (index into vehicles array)
+    @SerializedName("distance")
+    @Expose
+    private float distance;//Estimated distance (in km)
+    @SerializedName("transitDuration")
+    @Expose
     private float transitDuration;//Estimated duration spent in transit (in minutes)
-    private float transferDuration; //Estimated duration spent waiting for transfer (in minutes)
-    private List<IndicativePrice> indicativePrices; //IndicativePrice[] 	Array of indicative prices (optional)
-    private List<AirLeg> outbound; //Array of outbound legs
-    @SerializedName("return")
-    private List<AirLeg> returnLegs;  //Array of return legs
+    @SerializedName("transferDuration")
+    @Expose
+    private float transferDuration;//Estimated duration spent waiting for transfer (in minutes)
+    @SerializedName("indicativePrices")
+    @Expose
+    private List<IndicativePrice> indicativePrices = null;//IndicativePrice[] 	Array of indicative prices (optional)
 
     public Segment() {
     }
@@ -106,22 +117,6 @@ public class Segment implements Parcelable {
         this.indicativePrices = indicativePrices;
     }
 
-    public List<AirLeg> getOutbound() {
-        return outbound;
-    }
-
-    public void setOutbound(List<AirLeg> outbound) {
-        this.outbound = outbound;
-    }
-
-    public List<AirLeg> getReturnLegs() {
-        return returnLegs;
-    }
-
-    public void setReturnLegs(List<AirLeg> returnLegs) {
-        this.returnLegs = returnLegs;
-    }
-
     protected Segment(Parcel in) {
         segmentKind = in.readString();
         depPlace = in.readInt();
@@ -135,18 +130,6 @@ public class Segment implements Parcelable {
             in.readList(indicativePrices, IndicativePrice.class.getClassLoader());
         } else {
             indicativePrices = null;
-        }
-        if (in.readByte() == 0x01) {
-            outbound = new ArrayList<AirLeg>();
-            in.readList(outbound, AirLeg.class.getClassLoader());
-        } else {
-            outbound = null;
-        }
-        if (in.readByte() == 0x01) {
-            returnLegs = new ArrayList<AirLeg>();
-            in.readList(returnLegs, AirLeg.class.getClassLoader());
-        } else {
-            returnLegs = null;
         }
     }
 
@@ -169,18 +152,6 @@ public class Segment implements Parcelable {
         } else {
             dest.writeByte((byte) (0x01));
             dest.writeList(indicativePrices);
-        }
-        if (outbound == null) {
-            dest.writeByte((byte) (0x00));
-        } else {
-            dest.writeByte((byte) (0x01));
-            dest.writeList(outbound);
-        }
-        if (returnLegs == null) {
-            dest.writeByte((byte) (0x00));
-        } else {
-            dest.writeByte((byte) (0x01));
-            dest.writeList(returnLegs);
         }
     }
 

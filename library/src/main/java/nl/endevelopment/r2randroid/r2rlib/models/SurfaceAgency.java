@@ -13,21 +13,21 @@ import java.util.List;
 public class SurfaceAgency implements Parcelable {
 
     /**
-     agency 	    integer 	Agency (index into agencies array)
-     frequency 	    float 	Estimated feequency (per week) (optional)
-     duration 	    float 	Estimated duration (in minutes) (optional)
-     operatingDays 	DayFlags 	Days of operation bitmask (optional)
-     lineNames 	    SurfaceLineName[] 	Array of line names (optional) [1]
-     lineCodes 	    SurfaceLineCode[] 	Array of line codes (optional) [1]
-     links 	        ExternalLink[] 	Array of links (optional)
+     * agency 	    integer 	Agency (index into agencies array)
+     * frequency 	    float 	Estimated feequency (per week) (optional)
+     * duration 	    float 	Estimated duration (in minutes) (optional)
+     * operatingDays 	DayFlags 	Days of operation bitmask (optional)
+     * lineNames 	    SurfaceLineName[] 	Array of line names (optional) [1]
+     * lineCodes 	    SurfaceLineCode[] 	Array of line codes (optional) [1]
+     * links 	        ExternalLink[] 	Array of links (optional)
      */
 
     private int agency;
     private float frequency;
     private float duration;
     private DayFlags operatindDays;
-    private List<SurfaceLineName> lineNames;
-    private List<SurfaceLineCode> lineCodes;
+    private List<String> lineNames;
+    private List<String> lineCodes;
     private List<ExternalLink> links;
 
     public SurfaceAgency() {
@@ -65,19 +65,19 @@ public class SurfaceAgency implements Parcelable {
         this.operatindDays = operatindDays;
     }
 
-    public List<SurfaceLineName> getLineNames() {
+    public List<String> getLineNames() {
         return lineNames;
     }
 
-    public void setLineNames(List<SurfaceLineName> lineNames) {
+    public void setLineNames(List<String> lineNames) {
         this.lineNames = lineNames;
     }
 
-    public List<SurfaceLineCode> getLineCodes() {
+    public List<String> getLineCodes() {
         return lineCodes;
     }
 
-    public void setLineCodes(List<SurfaceLineCode> lineCodes) {
+    public void setLineCodes(List<String> lineCodes) {
         this.lineCodes = lineCodes;
     }
 
@@ -89,20 +89,21 @@ public class SurfaceAgency implements Parcelable {
         this.links = links;
     }
 
+
     protected SurfaceAgency(Parcel in) {
         agency = in.readInt();
         frequency = in.readFloat();
         duration = in.readFloat();
         operatindDays = (DayFlags) in.readValue(DayFlags.class.getClassLoader());
         if (in.readByte() == 0x01) {
-            lineNames = new ArrayList<SurfaceLineName>();
-            in.readList(lineNames, SurfaceLineName.class.getClassLoader());
+            lineNames = new ArrayList<String>();
+            in.readList(lineNames, String.class.getClassLoader());
         } else {
             lineNames = null;
         }
         if (in.readByte() == 0x01) {
-            lineCodes = new ArrayList<SurfaceLineCode>();
-            in.readList(lineCodes, SurfaceLineCode.class.getClassLoader());
+            lineCodes = new ArrayList<String>();
+            in.readList(lineCodes, String.class.getClassLoader());
         } else {
             lineCodes = null;
         }

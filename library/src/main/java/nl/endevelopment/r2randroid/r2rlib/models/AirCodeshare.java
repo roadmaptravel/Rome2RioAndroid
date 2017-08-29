@@ -3,6 +3,9 @@ package nl.endevelopment.r2randroid.r2rlib.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by jan on 11/07/16.
  */
@@ -13,7 +16,11 @@ public class AirCodeshare implements Parcelable {
      flight 	string 	    Flight number
      */
 
+    @SerializedName("airline")
+    @Expose
     private int airline;
+    @SerializedName("flight")
+    @Expose
     private String flight;
 
     public AirCodeshare() {

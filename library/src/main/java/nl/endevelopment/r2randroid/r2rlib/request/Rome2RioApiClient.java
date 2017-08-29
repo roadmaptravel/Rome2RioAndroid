@@ -8,9 +8,13 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.io.IOException;
 
+import nl.endevelopment.r2randroid.r2rlib.models.AirSegment;
 import nl.endevelopment.r2randroid.r2rlib.models.DayFlags;
+import nl.endevelopment.r2randroid.r2rlib.models.Segment;
+import nl.endevelopment.r2randroid.r2rlib.models.SurfaceSegment;
 import nl.endevelopment.r2randroid.r2rlib.parser.BooleanParser;
 import nl.endevelopment.r2randroid.r2rlib.parser.DayFlagsParser;
+import nl.endevelopment.r2randroid.r2rlib.parser.RuntimeTypeAdapterFactory;
 import nl.endevelopment.r2randroid.r2rlib.utils.ConnectionUtils;
 import okhttp3.Cache;
 import okhttp3.HttpUrl;
@@ -92,9 +96,18 @@ public class Rome2RioApiClient {
      * @return GsonConverterFactory
      */
     public GsonConverterFactory getGsonConverterFactory(){
+
+
+        //polymorphism for segment model
+        RuntimeTypeAdapterFactory<Segment> runtimeTypeAdapterFactory = RuntimeTypeAdapterFactory
+                .of(Segment.class, "segmentKind")
+                .registerSubtype(AirSegment.class, "air")
+                .registerSubtype(SurfaceSegment.class, "surface");
+
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Boolean.class, new BooleanParser())
                 .registerTypeAdapter(DayFlags.class, new DayFlagsParser())
+                .registerTypeAdapterFactory(runtimeTypeAdapterFactory)
                 .create();
 
         GsonConverterFactory factory = GsonConverterFactory.create(gson);
