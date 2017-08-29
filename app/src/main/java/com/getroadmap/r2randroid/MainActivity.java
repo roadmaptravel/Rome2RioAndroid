@@ -4,16 +4,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.getroadmap.r2rlib.request.Rome2RioApiClient;
+import com.getroadmap.r2rlib.request.Rome2RioService;
+import com.getroadmap.r2rlib.request.SearchRequest;
+import com.getroadmap.r2rlib.request.SearchResponse;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import com.getroadmap.r2rlib.request.Rome2RioApiClient;
-import com.getroadmap.r2rlib.request.Rome2RioService;
-import com.getroadmap.r2rlib.request.SearchRequest;
-import com.getroadmap.r2rlib.request.SearchResponse;
-import com.getroadmap.r2randroid.rome2rioandroid.R;
 
 public class MainActivity extends AppCompatActivity {
 
