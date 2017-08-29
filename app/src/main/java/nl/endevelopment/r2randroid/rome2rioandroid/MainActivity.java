@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
-import io.reactivex.Observer;
+import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -38,31 +38,22 @@ public class MainActivity extends AppCompatActivity {
         service.getSearchResponseRx(searchRequest.toUrl())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<SearchResponse>() {
+                .subscribe(new SingleObserver<SearchResponse>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(SearchResponse searchResponse) {
-                        Log.d(TAG, "onNext() called with: searchResponse = [" + searchResponse + "]");
+                    public void onSuccess(SearchResponse searchResponse) {
                         textView.setText(searchResponse.toString());
-
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         Log.d(TAG, "onError() called with: e = [" + e + "]");
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
                     }
                 });
-
 
 
     }

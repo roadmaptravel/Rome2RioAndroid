@@ -1,6 +1,6 @@
 package nl.endevelopment.r2randroid.r2rlib.request;
 
-import io.reactivex.Observable;
+import io.reactivex.Single;
 import retrofit2.http.GET;
 import retrofit2.http.Url;
 
@@ -12,5 +12,5 @@ import retrofit2.http.Url;
 
 public interface Rome2RioService {
     @GET
-    Observable<SearchResponse> getSearchResponseRx(@Url String url);
+    Single<SearchResponse> getSearchResponseRx(@Url String url);
 }
