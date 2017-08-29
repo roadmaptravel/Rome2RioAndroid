@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nl.endevelopment.r2randroid.rome2rioandroid.MainActivity">
+    tools:context="com.getroadmap.r2randroid.rome2rioandroid.com.getroadmap.r2randroid.MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
