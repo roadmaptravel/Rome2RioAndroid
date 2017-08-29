@@ -11,10 +11,14 @@ import java.io.IOException;
 import nl.endevelopment.r2randroid.r2rlib.models.AirSegment;
 import nl.endevelopment.r2randroid.r2rlib.models.DayFlags;
 import nl.endevelopment.r2randroid.r2rlib.models.Segment;
+import nl.endevelopment.r2randroid.r2rlib.models.SurfaceLineCode;
+import nl.endevelopment.r2randroid.r2rlib.models.SurfaceLineName;
 import nl.endevelopment.r2randroid.r2rlib.models.SurfaceSegment;
 import nl.endevelopment.r2randroid.r2rlib.parser.BooleanParser;
 import nl.endevelopment.r2randroid.r2rlib.parser.DayFlagsParser;
 import nl.endevelopment.r2randroid.r2rlib.parser.RuntimeTypeAdapterFactory;
+import nl.endevelopment.r2randroid.r2rlib.parser.SurfaceLineCodeParser;
+import nl.endevelopment.r2randroid.r2rlib.parser.SurfaceLineNameParser;
 import nl.endevelopment.r2randroid.r2rlib.utils.ConnectionUtils;
 import okhttp3.Cache;
 import okhttp3.HttpUrl;
@@ -93,9 +97,10 @@ public class Rome2RioApiClient {
     /**
      * get gson converter factory
      * register type adapters here
+     *
      * @return GsonConverterFactory
      */
-    public GsonConverterFactory getGsonConverterFactory(){
+    public GsonConverterFactory getGsonConverterFactory() {
 
 
         //polymorphism for segment model
@@ -107,6 +112,8 @@ public class Rome2RioApiClient {
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Boolean.class, new BooleanParser())
                 .registerTypeAdapter(DayFlags.class, new DayFlagsParser())
+                .registerTypeAdapter(SurfaceLineCode.class, new SurfaceLineCodeParser())
+                .registerTypeAdapter(SurfaceLineName.class, new SurfaceLineNameParser())
                 .registerTypeAdapterFactory(runtimeTypeAdapterFactory)
                 .create();
 

@@ -13,6 +13,10 @@ public class SurfaceLineCode implements Parcelable {
     public SurfaceLineCode() {
     }
 
+    public SurfaceLineCode(String code) {
+        this.code = code;
+    }
+
     public String getCode() {
         return code;
     }

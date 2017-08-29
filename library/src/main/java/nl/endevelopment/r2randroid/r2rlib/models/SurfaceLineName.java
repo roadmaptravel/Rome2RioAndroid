@@ -13,6 +13,10 @@ public class SurfaceLineName implements Parcelable {
     public SurfaceLineName() {
     }
 
+    public SurfaceLineName(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }

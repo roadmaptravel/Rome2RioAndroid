@@ -26,8 +26,8 @@ public class SurfaceAgency implements Parcelable {
     private float frequency;
     private float duration;
     private DayFlags operatindDays;
-    private List<String> lineNames;
-    private List<String> lineCodes;
+    private List<SurfaceLineName> lineNames;
+    private List<SurfaceLineCode> lineCodes;
     private List<ExternalLink> links;
 
     public SurfaceAgency() {
@@ -65,19 +65,19 @@ public class SurfaceAgency implements Parcelable {
         this.operatindDays = operatindDays;
     }
 
-    public List<String> getLineNames() {
+    public List<SurfaceLineName> getLineNames() {
         return lineNames;
     }
 
-    public void setLineNames(List<String> lineNames) {
+    public void setLineNames(List<SurfaceLineName> lineNames) {
         this.lineNames = lineNames;
     }
 
-    public List<String> getLineCodes() {
+    public List<SurfaceLineCode> getLineCodes() {
         return lineCodes;
     }
 
-    public void setLineCodes(List<String> lineCodes) {
+    public void setLineCodes(List<SurfaceLineCode> lineCodes) {
         this.lineCodes = lineCodes;
     }
 
@@ -90,20 +90,21 @@ public class SurfaceAgency implements Parcelable {
     }
 
 
+
     protected SurfaceAgency(Parcel in) {
         agency = in.readInt();
         frequency = in.readFloat();
         duration = in.readFloat();
         operatindDays = (DayFlags) in.readValue(DayFlags.class.getClassLoader());
         if (in.readByte() == 0x01) {
-            lineNames = new ArrayList<String>();
-            in.readList(lineNames, String.class.getClassLoader());
+            lineNames = new ArrayList<SurfaceLineName>();
+            in.readList(lineNames, SurfaceLineName.class.getClassLoader());
         } else {
             lineNames = null;
         }
         if (in.readByte() == 0x01) {
-            lineCodes = new ArrayList<String>();
-            in.readList(lineCodes, String.class.getClassLoader());
+            lineCodes = new ArrayList<SurfaceLineCode>();
+            in.readList(lineCodes, SurfaceLineCode.class.getClassLoader());
         } else {
             lineCodes = null;
         }
