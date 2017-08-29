@@ -53,4 +53,11 @@ public class SurfaceLineCode implements Parcelable {
             return new SurfaceLineCode[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "SurfaceLineCode{" +
+                "code='" + code + '\'' +
+                '}';
+    }
 }

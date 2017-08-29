@@ -149,4 +149,19 @@ public class IndicativePrice implements Parcelable {
             return new IndicativePrice[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "IndicativePrice{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", priceLow=" + priceLow +
+                ", priceHigh=" + priceHigh +
+                ", currency='" + currency + '\'' +
+                ", nativePrice=" + nativePrice +
+                ", nativePriceLow=" + nativePriceLow +
+                ", nativePriceHigh=" + nativePriceHigh +
+                ", nativeCurrency='" + nativeCurrency + '\'' +
+                '}';
+    }
 }

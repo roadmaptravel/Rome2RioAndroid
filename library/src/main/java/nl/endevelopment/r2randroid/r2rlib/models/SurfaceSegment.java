@@ -106,4 +106,14 @@ public class SurfaceSegment extends Segment implements Parcelable {
             return new SurfaceSegment[size];
         }
     };
+
+
+    @Override
+    public String toString() {
+        return "SurfaceSegment{" +
+                "path='" + path + '\'' +
+                ", stops=" + stops +
+                ", agencies=" + agencies +
+                '}';
+    }
 }

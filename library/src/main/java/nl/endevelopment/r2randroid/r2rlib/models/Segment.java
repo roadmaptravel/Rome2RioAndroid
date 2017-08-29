@@ -167,4 +167,18 @@ public class Segment implements Parcelable {
             return new Segment[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "Segment{" +
+                "segmentKind='" + segmentKind + '\'' +
+                ", depPlace=" + depPlace +
+                ", arrPlace=" + arrPlace +
+                ", vehicle=" + vehicle +
+                ", distance=" + distance +
+                ", transitDuration=" + transitDuration +
+                ", transferDuration=" + transferDuration +
+                ", indicativePrices=" + indicativePrices +
+                '}';
+    }
 }

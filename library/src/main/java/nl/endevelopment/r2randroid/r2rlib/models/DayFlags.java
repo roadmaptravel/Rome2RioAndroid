@@ -44,4 +44,11 @@ public class DayFlags {
         return (flag & day) == day;
     }
 
+
+    @Override
+    public String toString() {
+        return "DayFlags{" +
+                "flag=" + flag +
+                '}';
+    }
 }

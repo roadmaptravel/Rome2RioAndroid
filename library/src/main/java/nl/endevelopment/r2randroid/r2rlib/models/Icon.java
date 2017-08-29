@@ -78,4 +78,15 @@ public class Icon implements Parcelable {
             return new Icon[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "Icon{" +
+                "url='" + url + '\'' +
+                ", x=" + x +
+                ", y=" + y +
+                ", w=" + w +
+                ", h=" + h +
+                '}';
+    }
 }

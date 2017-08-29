@@ -70,4 +70,12 @@ public class AirCodeshare implements Parcelable {
             return new AirCodeshare[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "AirCodeshare{" +
+                "airline=" + airline +
+                ", flight='" + flight + '\'' +
+                '}';
+    }
 }

@@ -77,4 +77,13 @@ public class Alternative implements Parcelable {
             return new Alternative[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "Alternative{" +
+                "firstSegment=" + firstSegment +
+                ", lastSegment=" + lastSegment +
+                ", route=" + route +
+                '}';
+    }
 }

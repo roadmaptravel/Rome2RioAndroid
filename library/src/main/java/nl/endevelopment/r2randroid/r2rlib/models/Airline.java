@@ -89,4 +89,13 @@ public class Airline implements Parcelable {
         }
     };
 
+    @Override
+    public String toString() {
+        return "Airline{" +
+                "code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                ", icon=" + icon +
+                '}';
+    }
 }

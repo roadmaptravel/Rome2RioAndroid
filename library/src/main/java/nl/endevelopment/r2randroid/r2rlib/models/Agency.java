@@ -54,4 +54,14 @@ public class Agency implements Parcelable {
             return new Agency[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "Agency{" +
+                "name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                ", phone='" + phone + '\'' +
+                ", icon=" + icon +
+                '}';
+    }
 }

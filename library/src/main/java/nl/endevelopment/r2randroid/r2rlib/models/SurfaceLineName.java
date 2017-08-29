@@ -51,4 +51,11 @@ public class SurfaceLineName implements Parcelable {
             return new SurfaceLineName[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "SurfaceLineName{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

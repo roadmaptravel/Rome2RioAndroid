@@ -191,4 +191,20 @@ public class Route implements Parcelable {
             return new Route[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "Route{" +
+                "name='" + name + '\'' +
+                ", depPlace=" + depPlace +
+                ", arrPlace=" + arrPlace +
+                ", distance=" + distance +
+                ", totalDuration=" + totalDuration +
+                ", totalTransitDuration=" + totalTransitDuration +
+                ", totalTransferDuration=" + totalTransferDuration +
+                ", indicativePrices=" + indicativePrices +
+                ", segments=" + segments +
+                ", alternatives=" + alternatives +
+                '}';
+    }
 }

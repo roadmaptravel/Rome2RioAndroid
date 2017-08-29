@@ -233,4 +233,25 @@ public class AirHop implements Parcelable {
             return new AirHop[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "AirHop{" +
+                "depPlace=" + depPlace +
+                ", arrPlace=" + arrPlace +
+                ", depTerminal='" + depTerminal + '\'' +
+                ", arrTerminal='" + arrTerminal + '\'' +
+                ", depTime='" + depTime + '\'' +
+                ", arrTime='" + arrTime + '\'' +
+                ", flight='" + flight + '\'' +
+                ", duration=" + duration +
+                ", airline='" + airline + '\'' +
+                ", operatingAirline='" + operatingAirline + '\'' +
+                ", aircraft='" + aircraft + '\'' +
+                ", dayChange=" + dayChange +
+                ", layoverDuration=" + layoverDuration +
+                ", layoverDayChange=" + layoverDayChange +
+                ", codeshares=" + codeshares +
+                '}';
+    }
 }

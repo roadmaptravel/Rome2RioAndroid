@@ -77,4 +77,12 @@ public class Vehicle implements Parcelable {
             return new Vehicle[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "name='" + name + '\'' +
+                ", kind='" + kind + '\'' +
+                '}';
+    }
 }

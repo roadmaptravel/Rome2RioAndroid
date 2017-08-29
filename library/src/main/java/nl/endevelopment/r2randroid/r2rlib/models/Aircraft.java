@@ -63,4 +63,13 @@ public class Aircraft implements Parcelable {
             return new Aircraft[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "Aircraft{" +
+                "code='" + code + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                '}';
+    }
 }

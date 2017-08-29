@@ -77,4 +77,13 @@ public class SurfaceStop implements Parcelable {
             return new SurfaceStop[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "SurfaceStop{" +
+                "place=" + place +
+                ", transitDuration=" + transitDuration +
+                ", stopDuration=" + stopDuration +
+                '}';
+    }
 }

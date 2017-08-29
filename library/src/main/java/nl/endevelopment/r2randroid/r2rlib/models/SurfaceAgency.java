@@ -159,4 +159,17 @@ public class SurfaceAgency implements Parcelable {
             return new SurfaceAgency[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "SurfaceAgency{" +
+                "agency=" + agency +
+                ", frequency=" + frequency +
+                ", duration=" + duration +
+                ", operatindDays=" + operatindDays +
+                ", lineNames=" + lineNames +
+                ", lineCodes=" + lineCodes +
+                ", links=" + links +
+                '}';
+    }
 }

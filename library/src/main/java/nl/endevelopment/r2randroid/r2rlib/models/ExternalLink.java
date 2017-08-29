@@ -87,4 +87,14 @@ public class ExternalLink implements Parcelable {
             return new ExternalLink[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "ExternalLink{" +
+                "text='" + text + '\'' +
+                ", url='" + url + '\'' +
+                ", displayUrl='" + displayUrl + '\'' +
+                ", moustacheUrl='" + moustacheUrl + '\'' +
+                '}';
+    }
 }

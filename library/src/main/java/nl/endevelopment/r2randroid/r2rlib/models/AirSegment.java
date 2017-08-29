@@ -105,4 +105,12 @@ public class AirSegment extends Segment implements Parcelable {
             return new AirSegment[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "AirSegment{" +
+                "outbound=" + outbound +
+                ", returns=" + returns +
+                '}';
+    }
 }
