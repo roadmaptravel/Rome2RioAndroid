@@ -3,7 +3,12 @@ A wrapper for the [Rome2Rio](https://www.rome2rio.com/) API. See the Rome2Rio [d
 
 
 ## Download
-TBD
+### Gradle
+```
+dependencies {
+    compile 'com.getroadmap.rome2rioandroid:Rome2RioAndroid:0.1'
+}
+```
 
 ## Usage
 
@@ -31,7 +36,7 @@ service.getSearchResponseRx(searchRequest.toUrl())
 
             @Override
             public void onSuccess(SearchResponse searchResponse) {
-                textView.setText(searchResponse.toString());
+                Log.d("DEBUG, "onSuccess() called with: searchResponse = [" + searchResponse.toString + "]");
             }
 
             @Override
