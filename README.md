@@ -36,7 +36,7 @@ service.getSearchResponseRx(searchRequest.toUrl())
 
             @Override
             public void onSuccess(SearchResponse searchResponse) {
-                Log.d("DEBUG, "onSuccess() called with: searchResponse = [" + searchResponse.toString + "]");
+                Log.d("DEBUG", "onSuccess() called with: searchResponse = [" + searchResponse.toString + "]");
             }
 
             @Override
