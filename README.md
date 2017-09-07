@@ -1,13 +1,26 @@
+[![](https://jitpack.io/v/roadmaptravel/Rome2RioAndroid.svg)](https://jitpack.io/#roadmaptravel/Rome2RioAndroid)
+
 # Rome2RioAndroid
 A wrapper for the [Rome2Rio](https://www.rome2rio.com/) API. See the Rome2Rio [documentation](https://www.rome2rio.com/documentation/1-4/search/) for more information
 
 
 ## Download
 ### Gradle
+Add it in your root build.gradle at the end of repositories:
+```
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+Add the dependency
 ```
 dependencies {
-    compile 'com.getroadmap.rome2rioandroid:Rome2RioAndroid:0.1'
+    compile 'com.github.roadmaptravel:Rome2RioAndroid:0.1'
 }
+
 ```
 
 ## Usage
