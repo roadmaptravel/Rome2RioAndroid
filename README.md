@@ -18,7 +18,7 @@ allprojects {
 Add the dependency
 ```
 dependencies {
-    compile 'com.github.roadmaptravel:Rome2RioAndroid:0.1'
+    compile 'com.github.roadmaptravel:Rome2RioAndroid:0.1.3'
 }
 
 ```
@@ -31,6 +31,8 @@ This library makes use of RxAndroid for its calls.
 String key = "{YOUR API KEY}"
 Rome2RioService service = new Rome2RioApiClient(this, key).getService();
 
+// for more parameters, check the documentation of 
+// the SearchRequest on https://www.rome2rio.com/documentation/1-4/search/
 SearchRequest searchRequest = new SearchRequest.SearchRequestBuilder()
         .oName("Delft")
         .dName("London")
