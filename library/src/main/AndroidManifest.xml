@@ -2,6 +2,6 @@
     package="com.getroadmap.r2rlib">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <application/>
+    <application />
 
 </manifest>
