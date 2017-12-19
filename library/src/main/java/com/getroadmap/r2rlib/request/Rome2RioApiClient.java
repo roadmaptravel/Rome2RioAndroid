@@ -31,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Rome2RioApiClient {
 
-    public static final String API_URL = "http://free.rome2rio.com/api/1.4/json/";
+    public static final String API_URL = "https://free.rome2rio.com/api/1.4/json/";
 
     private Rome2RioService rome2RioService;
     private Context context;
