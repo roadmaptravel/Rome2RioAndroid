@@ -18,7 +18,7 @@ allprojects {
 Add the dependency
 ```
 dependencies {
-    compile 'com.github.roadmaptravel:Rome2RioAndroid:0.1.3'
+    compile 'com.github.roadmaptravel:Rome2RioAndroid:0.1.4'
 }
 
 ```
