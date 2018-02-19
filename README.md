@@ -18,7 +18,7 @@ allprojects {
 Add the dependency
 ```
 dependencies {
-    compile 'com.github.roadmaptravel:Rome2RioAndroid:0.1.4'
+    compile 'com.github.roadmaptravel:Rome2RioAndroid:0.1.6'
 }
 
 ```
@@ -29,7 +29,8 @@ This library makes use of RxAndroid for its calls.
 
 ```java
 String key = "{YOUR API KEY}"
-Rome2RioService service = new Rome2RioApiClient(this, key).getService();
+int cacheDuration = 60; //60 seconds caching duration. Default is 30 secs.
+Rome2RioService service = new Rome2RioApiClient(this, key, cacheDuration).getService();
 
 // for more parameters, check the documentation of 
 // the SearchRequest on https://www.rome2rio.com/documentation/1-4/search/
@@ -60,6 +61,8 @@ service.getSearchResponseRx(searchRequest.toUrl())
             }
         });
 ```
+
+
 ## License
 
     Copyright 2017 Roadmap
