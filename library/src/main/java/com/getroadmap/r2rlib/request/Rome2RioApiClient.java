@@ -35,8 +35,13 @@ public class Rome2RioApiClient {
 
     private Rome2RioService rome2RioService;
     private Context context;
+    private int cacheDuration = 30; //cache duration of 60 seconds
 
     public Rome2RioApiClient(Context context, String key) {
+        this(context, key, 30);
+    }
+
+    public Rome2RioApiClient(Context context, String key, int cacheDuration){
         this.context = context;
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -46,6 +51,7 @@ public class Rome2RioApiClient {
                 .client(getClient(key))
                 .build();
 
+        this.cacheDuration = cacheDuration;
         // Create an instance of our API interface.
         rome2RioService = retrofit.create(Rome2RioService.class);
     }
@@ -76,12 +82,11 @@ public class Rome2RioApiClient {
                         Response originalResponse = chain.proceed(request);
 
                         if (ConnectionUtils.isNetworkConnected(context)) {
-                            int maxAge = 30; // read from cache for 30 seconds
                             return originalResponse.newBuilder()
-                                    .header("Cache-Control", "public, max-age=" + maxAge)
+                                    .header("Cache-Control", "public, max-age=" + cacheDuration)
                                     .build();
                         } else {
-                            int maxStale = 60 * 60; // tolerate 1 hour stale
+                            int maxStale = 60 * 60 * 24; // tolerate 24 hour stale
                             return originalResponse.newBuilder()
                                     .header("Cache-Control", "public, only-if-cached, max-stale=" + maxStale)
                                     .build();
