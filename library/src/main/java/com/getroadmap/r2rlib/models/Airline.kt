@@ -16,10 +16,10 @@ import android.os.Parcelable
  * url 	string 	Airline URL (optional)
  * icon 	Icon 	Airline icon (optional)
  */
-class Airline(var code: String?,
-              var name: String?,
-              var url: String?,
-              var icon: Icon?) : Parcelable {
+data class Airline(val code: String?,
+                   val name: String?,
+                   val url: String?,
+                   val icon: Icon?) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readString(),

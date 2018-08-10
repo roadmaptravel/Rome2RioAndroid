@@ -8,43 +8,40 @@ import java.util.ArrayList
 /**
  * https://www.rome2rio.com/documentation/search#Route
  */
-open class Route() : Parcelable {
 
-    /**
-     * name 	                string 	            Route display name
-     * depPlace 	            integer 	        Departure place (index into places array)
-     * arrPlace 	            integer 	        Arrival place (index into places array)
-     * distance 	            float 	            Estimated total distance (in km)
-     * totalDuration 	        float 	            Estimated total duration (in minutes, includes transfers)
-     * totalTransitDuration 	float 	            Estimated total duration spent in transit (in minutes)
-     * totalTransferDuration 	float 	            Estimated total duration spent waiting for transfers (in minutes)
-     * indicativePrices 	    IndicativePrice[] 	Array of indicative prices (optional)
-     * segments 	            Segment[] 	        Array of segments
-     * alternatives 	        Alternative[] 	    Array of alternative segments (optional)
-     */
-
-     var name: String? = null
-     var depPlace: Int? = null
-     var arrPlace: Int? = null
-     var distance: Float? = null
-     var totalDuration: Float? = null
-     var totalTransitDuration: Float? = null
-     var totalTransferDuration: Float? = null
-     var indicativePrices: List<IndicativePrice>? = null
-     var segments: List<Segment>? = null
-     var alternatives: List<Alternative>? = null
-
-    constructor(parcel: Parcel) : this() {
-        name = parcel.readString()
-        depPlace = parcel.readValue(Int::class.java.classLoader) as? Int
-        arrPlace = parcel.readValue(Int::class.java.classLoader) as? Int
-        distance = parcel.readValue(Float::class.java.classLoader) as? Float
-        totalDuration = parcel.readValue(Float::class.java.classLoader) as? Float
-        totalTransitDuration = parcel.readValue(Float::class.java.classLoader) as? Float
-        totalTransferDuration = parcel.readValue(Float::class.java.classLoader) as? Float
-        indicativePrices = parcel.createTypedArrayList(IndicativePrice.CREATOR)
-        segments = parcel.createTypedArrayList(Segment)
-        alternatives = parcel.createTypedArrayList(Alternative.CREATOR)
+/**
+ * name 	                string 	            Route display name
+ * depPlace 	            integer 	        Departure place (index into places array)
+ * arrPlace 	            integer 	        Arrival place (index into places array)
+ * distance 	            float 	            Estimated total distance (in km)
+ * totalDuration 	        float 	            Estimated total duration (in minutes, includes transfers)
+ * totalTransitDuration 	float 	            Estimated total duration spent in transit (in minutes)
+ * totalTransferDuration 	float 	            Estimated total duration spent waiting for transfers (in minutes)
+ * indicativePrices 	    IndicativePrice[] 	Array of indicative prices (optional)
+ * segments 	            Segment[] 	        Array of segments
+ * alternatives 	        Alternative[] 	    Array of alternative segments (optional)
+ */
+data class Route(val name: String?,
+                 val depPlace: Int?,
+                 val arrPlace: Int?,
+                 val distance: Float?,
+                 val totalDuration: Float?,
+                 val totalTransitDuration: Float?,
+                 val totalTransferDuration: Float?,
+                 val indicativePrices: List<IndicativePrice>?,
+                 val segments: List<Segment>?,
+                 val alternatives: List<Alternative>?) : Parcelable {
+    constructor(parcel: Parcel) : this(
+            parcel.readString(),
+            parcel.readValue(Int::class.java.classLoader) as? Int,
+            parcel.readValue(Int::class.java.classLoader) as? Int,
+            parcel.readValue(Float::class.java.classLoader) as? Float,
+            parcel.readValue(Float::class.java.classLoader) as? Float,
+            parcel.readValue(Float::class.java.classLoader) as? Float,
+            parcel.readValue(Float::class.java.classLoader) as? Float,
+            parcel.createTypedArrayList(IndicativePrice),
+            parcel.createTypedArrayList(Segment),
+            parcel.createTypedArrayList(Alternative)) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -73,4 +70,6 @@ open class Route() : Parcelable {
             return arrayOfNulls(size)
         }
     }
+
+
 }

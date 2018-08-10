@@ -15,9 +15,9 @@ import android.os.Parcelable
  * transitDuration 	float 	Estimated duration spent in transit (in minutes)
  * stopDuration 	    float 	Estimated duration spent waiting at stop before departing (in minutes)
  */
-data class SurfaceStop(var place: Int?,
-                       var transitDuration: Float?,
-                       var stopDuration: Float?) : Parcelable {
+data class SurfaceStop(val place: Int?,
+                       val transitDuration: Float?,
+                       val stopDuration: Float?) : Parcelable {
 
     constructor(parcel: Parcel) : this(
             parcel.readValue(Int::class.java.classLoader) as? Int,

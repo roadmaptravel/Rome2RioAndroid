@@ -10,23 +10,22 @@ import java.util.ArrayList
  * https://www.rome2rio.com/documentation/search#AirLeg
  */
 
-open class AirLeg() : Parcelable {
-    /**
-     * operatingDays  	DayFlags 	        Days of operation bitmask (optional)
-     * indicativePrices 	IndicativePrice[] 	Array of indicative prices (optional)
-     * hops 	            AirHop[] 	        Array of hops
-     */
-
-     var operatingDays: DayFlags? = null
-     var indicativePrices: List<IndicativePrice>? = null
-     var hops: List<AirHop>? = null
-
-    constructor(parcel: Parcel) : this() {
-        indicativePrices = parcel.createTypedArrayList(IndicativePrice.CREATOR)
-        hops = parcel.createTypedArrayList(AirHop.CREATOR)
+/**
+ * operatingDays  	DayFlags 	        Days of operation bitmask (optional)
+ * indicativePrices 	IndicativePrice[] 	Array of indicative prices (optional)
+ * hops 	            AirHop[] 	        Array of hops
+ */
+data class AirLeg(val operatingDays: DayFlags?,
+                  val indicativePrices: List<IndicativePrice>?,
+                  val hops: List<AirHop>?) : Parcelable {
+    constructor(parcel: Parcel) : this(
+            parcel.readValue(Int::class.java.classLoader) as? DayFlags,
+            parcel.createTypedArrayList(IndicativePrice),
+            parcel.createTypedArrayList(AirHop)) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeValue(operatingDays?.flag)
         parcel.writeTypedList(indicativePrices)
         parcel.writeTypedList(hops)
     }
@@ -44,5 +43,4 @@ open class AirLeg() : Parcelable {
             return arrayOfNulls(size)
         }
     }
-
 }

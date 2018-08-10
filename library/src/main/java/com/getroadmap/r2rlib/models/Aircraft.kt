@@ -9,22 +9,20 @@ import android.os.Parcelable
  * https://www.rome2rio.com/documentation/search#Aircraft
  * class for api v1.4
  */
-class Aircraft() : Parcelable {
 
-    /**
-     * code 	        string 	Aircraft code (IATA)
-     * manufacturer 	string 	Manufacturer name
-     * model 	        string 	Model name
-     */
 
-    var code: String? = null
-    var manufacturer: String? = null
-    var model: String? = null
-
-    constructor(parcel: Parcel) : this() {
-        code = parcel.readString()
-        manufacturer = parcel.readString()
-        model = parcel.readString()
+/**
+ * code 	        string 	Aircraft code (IATA)
+ * manufacturer 	string 	Manufacturer name
+ * model 	        string 	Model name
+ */
+data class Aircraft(val code: String?,
+                    val manufacturer: String?,
+                    val model: String?) : Parcelable {
+    constructor(parcel: Parcel) : this(
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString()) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -46,5 +44,4 @@ class Aircraft() : Parcelable {
             return arrayOfNulls(size)
         }
     }
-
 }

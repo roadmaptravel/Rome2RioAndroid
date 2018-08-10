@@ -14,10 +14,10 @@ import android.os.Parcelable
  * phone 	string 	Agency Phone Number (optional)
  * icon 	Icon 	Agency icon (optional)
  */
-data class Agency(var name: String?,
-                  var url: String?,
-                  var phone: String?,
-                  var icon: Icon?) : Parcelable {
+data class Agency(val name: String?,
+                  val url: String?,
+                  val phone: String?,
+                  val icon: Icon?) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readString(),

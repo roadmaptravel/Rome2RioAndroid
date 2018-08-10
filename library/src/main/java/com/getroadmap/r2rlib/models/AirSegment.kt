@@ -12,34 +12,30 @@ import java.util.ArrayList
  * Created by jan on 11/07/16.
  */
 
-class AirSegment() : Segment() {
-
-    /**
-     * segmentKind 	    string 	"air"
-     * depPlace 	        integer 	Departure airport (index into places array)
-     * arrPlace 	        integer 	Arrival airport (index into places array)
-     * vehicle 	        integer 	Vehicle (index into vehicles array)
-     * distance 	        float 	Estimated distance (in km)
-     * transitDuration 	float 	Estimated duration spent in transit (in minutes)
-     * transferDuration 	float 	Estimated duration spent waiting for transfer (in minutes)
-     * indicativePrices 	IndicativePrice[] 	Array of indicative prices (optional)
-     *
-     * outbound 	        AirLeg[] 	Array of outbound legs
-     * return 	        AirLeg[] 	Array of return legs
-     *
-     * @return
-     */
-
-    @SerializedName("outbound")
-    @Expose
-    var outbound: List<AirLeg>? = null
-    @SerializedName("return")
-    @Expose
-    var returns: List<AirLeg>? = null
-
-    constructor(parcel: Parcel) : this() {
-        outbound = parcel.createTypedArrayList(AirLeg)
-        returns = parcel.createTypedArrayList(AirLeg)
+/**
+ * segmentKind 	    string 	"air"
+ * depPlace 	        integer 	Departure airport (index into places array)
+ * arrPlace 	        integer 	Arrival airport (index into places array)
+ * vehicle 	        integer 	Vehicle (index into vehicles array)
+ * distance 	        float 	Estimated distance (in km)
+ * transitDuration 	float 	Estimated duration spent in transit (in minutes)
+ * transferDuration 	float 	Estimated duration spent waiting for transfer (in minutes)
+ * indicativePrices 	IndicativePrice[] 	Array of indicative prices (optional)
+ *
+ * outbound 	        AirLeg[] 	Array of outbound legs
+ * return 	        AirLeg[] 	Array of return legs
+ *
+ * @return
+ */
+data class AirSegment(@SerializedName("outbound")
+                      @Expose
+                      val outbound: List<AirLeg>?,
+                      @SerializedName("return")
+                      @Expose
+                      val returns: List<AirLeg>?) : Segment() {
+    constructor(parcel: Parcel) : this(
+            parcel.createTypedArrayList(AirLeg),
+            parcel.createTypedArrayList(AirLeg)) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -61,5 +57,4 @@ class AirSegment() : Segment() {
             return arrayOfNulls(size)
         }
     }
-
 }

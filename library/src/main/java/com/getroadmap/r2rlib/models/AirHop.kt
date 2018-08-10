@@ -9,58 +9,54 @@ import java.util.ArrayList
  * Created by jan on 11/07/16.
  */
 
-class AirHop() : Parcelable {
-
-    /**
-     * depPlace 	        integer 	Departure airport (index into places array)
-     * arrPlace 	        integer 	Arrival airport (index into places array)
-     * depTerminal 	    string 	Departure airport terminal (optional)
-     * arrTerminal 	    string 	Arrivar airport terminal (optional)
-     * depTime 	        string 	Departure time (24-hour local time - hh:mm)
-     * arrTime 	        string 	Arrivar time (24-hour local time - hh:mm)
-     * flight 	        string 	Flight number
-     * duration 	        float 	Estimated flight duration (in minutes)
-     * airline 	        string 	Advertised airline (index into airlines array)
-     * operatingAirline 	string 	Operating airline (index into airlines array) (optional)
-     * aircraft 	        string 	Aircraft (index into aircrafts array) (optional)
-     * dayChange 	        integer 	Num day changes during flight (optional)
-     * layoverDuration 	float 	Layover time (in minutes) (optional)
-     * layoverDayChange 	integer 	Num day changes during layover (optional)
-     * codeshares 	    AirCodeshare[] 	Array of codeshares (optional)
-     */
-
-    var depPlace: Int? = null
-    var arrPlace: Int? = null
-    var depTerminal: String? = null
-    var arrTerminal: String? = null
-    var depTime: String? = null
-    var arrTime: String? = null
-    var flight: String? = null
-    var duration: Float? = null
-    var airline: String? = null
-    var operatingAirline: String? = null
-    var aircraft: String? = null
-    var dayChange: Int? = null
-    var layoverDuration: Float? = null
-    var layoverDayChange: Int? = null
-    var codeshares: List<AirCodeshare>? = null
-
-    constructor(parcel: Parcel) : this() {
-        depPlace = parcel.readValue(Int::class.java.classLoader) as? Int
-        arrPlace = parcel.readValue(Int::class.java.classLoader) as? Int
-        depTerminal = parcel.readString()
-        arrTerminal = parcel.readString()
-        depTime = parcel.readString()
-        arrTime = parcel.readString()
-        flight = parcel.readString()
-        duration = parcel.readValue(Float::class.java.classLoader) as? Float
-        airline = parcel.readString()
-        operatingAirline = parcel.readString()
-        aircraft = parcel.readString()
-        dayChange = parcel.readValue(Int::class.java.classLoader) as? Int
-        layoverDuration = parcel.readValue(Float::class.java.classLoader) as? Float
-        layoverDayChange = parcel.readValue(Int::class.java.classLoader) as? Int
-        codeshares = parcel.createTypedArrayList(AirCodeshare)
+/**
+ * depPlace 	        integer 	Departure airport (index into places array)
+ * arrPlace 	        integer 	Arrival airport (index into places array)
+ * depTerminal 	    string 	Departure airport terminal (optional)
+ * arrTerminal 	    string 	Arrival airport terminal (optional)
+ * depTime 	        string 	Departure time (24-hour local time - hh:mm)
+ * arrTime 	        string 	Arrival time (24-hour local time - hh:mm)
+ * flight 	        string 	Flight number
+ * duration 	        float 	Estimated flight duration (in minutes)
+ * airline 	        string 	Advertised airline (index into airlines array)
+ * operatingAirline 	string 	Operating airline (index into airlines array) (optional)
+ * aircraft 	        string 	Aircraft (index into aircrafts array) (optional)
+ * dayChange 	        integer 	Num day changes during flight (optional)
+ * layoverDuration 	float 	Layover time (in minutes) (optional)
+ * layoverDayChange 	integer 	Num day changes during layover (optional)
+ * codeshares 	    AirCodeshare[] 	Array of codeshares (optional)
+ */
+data class AirHop(val depPlace: Int?,
+                  val arrPlace: Int?,
+                  val depTerminal: String?,
+                  val arrTerminal: String?,
+                  val depTime: String?,
+                  val arrTime: String?,
+                  val flight: String?,
+                  val duration: Float?,
+                  val airline: String?,
+                  val operatingAirline: String?,
+                  val aircraft: String?,
+                  val dayChange: Int?,
+                  val layoverDuration: Float?,
+                  val layoverDayChange: Int?,
+                  val codeshares: List<AirCodeshare>?) : Parcelable {
+    constructor(parcel: Parcel) : this(
+            parcel.readValue(Int::class.java.classLoader) as? Int,
+            parcel.readValue(Int::class.java.classLoader) as? Int,
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readValue(Float::class.java.classLoader) as? Float,
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readValue(Int::class.java.classLoader) as? Int,
+            parcel.readValue(Float::class.java.classLoader) as? Float,
+            parcel.readValue(Int::class.java.classLoader) as? Int,
+            parcel.createTypedArrayList(AirCodeshare)) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -94,5 +90,4 @@ class AirHop() : Parcelable {
             return arrayOfNulls(size)
         }
     }
-
 }

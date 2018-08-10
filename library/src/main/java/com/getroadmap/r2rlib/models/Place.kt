@@ -27,34 +27,34 @@ import com.getroadmap.r2rlib.enums.PlaceKind
  */
 data class Place(@SerializedName("lat")
                  @Expose
-                 var lat: Float?,
+                 val lat: Float?,
                  @SerializedName("lng")
                  @Expose
-                 var lng: Float?,
+                 val lng: Float?,
                  @SerializedName("kind")
                  @Expose
-                 var kind: String?,
+                 val kind: String?,
                  @SerializedName("shortName")
                  @Expose
-                 var shortName: String?,
+                 val shortName: String?,
                  @SerializedName("longName")
                  @Expose
-                 var longName: String?,
+                 val longName: String?,
                  @SerializedName("canonicalName")
                  @Expose
-                 var canonicalName: String?,
+                 val canonicalName: String?,
                  @SerializedName("regionCode")
                  @Expose
-                 var regionCode: String?,
+                 val regionCode: String?,
                  @SerializedName("countryCode")
                  @Expose
-                 var countryCode: String?,
+                 val countryCode: String?,
                  @SerializedName("timeZone")
                  @Expose
-                 var timeZone: String?,
+                 val timeZone: String?,
                  @SerializedName("code")
                  @Expose
-                 var code: String?) : Parcelable {
+                 val code: String?) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readValue(Float::class.java.classLoader) as? Float,
             parcel.readValue(Float::class.java.classLoader) as? Float,

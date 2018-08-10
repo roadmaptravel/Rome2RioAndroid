@@ -10,22 +10,19 @@ import com.google.gson.annotations.SerializedName
  * Created by jan on 11/07/16.
  */
 
-open class AirCodeshare() : Parcelable {
-    /**
-     * airline 	integer 	Airline (index into airlines array)
-     * flight 	string 	    Flight number
-     */
-
-    @SerializedName("airline")
-    @Expose
-    var airline: Int? = null
-    @SerializedName("flight")
-    @Expose
-    var flight: String? = null
-
-    constructor(parcel: Parcel) : this() {
-        airline = parcel.readValue(Int::class.java.classLoader) as? Int
-        flight = parcel.readString()
+/**
+ * airline 	integer 	Airline (index into airlines array)
+ * flight 	string 	    Flight number
+ */
+data class AirCodeshare(@SerializedName("airline")
+                        @Expose
+                        val airline: Int?,
+                        @SerializedName("flight")
+                        @Expose
+                        val flight: String?) : Parcelable {
+    constructor(parcel: Parcel) : this(
+            parcel.readValue(Int::class.java.classLoader) as? Int,
+            parcel.readString()) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

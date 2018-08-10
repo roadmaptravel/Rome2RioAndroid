@@ -18,9 +18,7 @@ public class SurfaceLineNameParser implements JsonDeserializer<SurfaceLineName> 
     public SurfaceLineName deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
 
         String name = json.getAsString();
-        SurfaceLineName surfaceLineName = new SurfaceLineName();
-        surfaceLineName.setName(name);
 
-        return surfaceLineName;
+        return new SurfaceLineName(name);
     }
 }

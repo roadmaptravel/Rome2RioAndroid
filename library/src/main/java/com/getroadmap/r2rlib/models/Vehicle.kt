@@ -11,9 +11,7 @@ import com.getroadmap.r2rlib.enums.VehicleKind
  * https://www.rome2rio.com/documentation/search#Vehicle
  */
 
-data class Vehicle(var name: String?,
-                   var kind: String?) : Parcelable {
-    /*
+/*
     name 	string 	Vehicle display name
     kind 	string 	Vehicle kind [1]
 
@@ -22,6 +20,9 @@ data class Vehicle(var name: String?,
       foot, animal, bicycle.
       Please note that this list will likely change in future revisions.
      */
+data class Vehicle(val name: String?,
+                   val kind: String?) : Parcelable {
+
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readString()) {

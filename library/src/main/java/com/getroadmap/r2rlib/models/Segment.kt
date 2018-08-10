@@ -75,6 +75,10 @@ open class Segment() : Parcelable {
         return 0
     }
 
+    override fun toString(): String {
+        return "Segment(segmentKind=$segmentKind, depPlace=$depPlace, arrPlace=$arrPlace, vehicle=$vehicle, distance=$distance, transitDuration=$transitDuration, transferDuration=$transferDuration, indicativePrices=$indicativePrices)"
+    }
+
     companion object CREATOR : Parcelable.Creator<Segment> {
         override fun createFromParcel(parcel: Parcel): Segment {
             return Segment(parcel)
@@ -84,6 +88,8 @@ open class Segment() : Parcelable {
             return arrayOfNulls(size)
         }
     }
+
+
 
 
 }
