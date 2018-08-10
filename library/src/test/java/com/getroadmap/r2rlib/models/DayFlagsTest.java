@@ -13,58 +13,58 @@ import static org.junit.Assert.assertThat;
 public class DayFlagsTest {
     @Test
     public void isSunday() throws Exception {
-        DayFlags dayFlags = new DayFlags(DayFlags.SUNDAY);
+        DayFlags dayFlags = new DayFlags(DayFlags.Companion.getSUNDAY());
 
-        assertThat(dayFlags.isDay(DayFlags.SUNDAY), is(true));
+        assertThat(dayFlags.isDay(DayFlags.Companion.getSUNDAY()), is(true));
     }
 
     @Test
     public void isWeekday() throws Exception {
-        DayFlags dayFlags = new DayFlags(DayFlags.WEEKDAYS);
+        DayFlags dayFlags = new DayFlags(DayFlags.Companion.getWEEKDAYS());
 
-        assertThat(dayFlags.isDay(DayFlags.FRIDAY), is(true));
+        assertThat(dayFlags.isDay(DayFlags.Companion.getFRIDAY()), is(true));
     }
 
     @Test
     public void isNotWeekday() throws Exception {
-        DayFlags dayFlags = new DayFlags(DayFlags.WEEKDAYS);
+        DayFlags dayFlags = new DayFlags(DayFlags.Companion.getWEEKDAYS());
 
-        assertThat(dayFlags.isDay(DayFlags.SUNDAY), is(false));
+        assertThat(dayFlags.isDay(DayFlags.Companion.getSUNDAY()), is(false));
     }
 
     @Test
     public void isWeekend() throws Exception {
-        DayFlags dayFlags = new DayFlags(DayFlags.WEEKENDS);
+        DayFlags dayFlags = new DayFlags(DayFlags.Companion.getWEEKENDS());
 
-        assertThat(dayFlags.isDay(DayFlags.SATURDAY), is(true));
+        assertThat(dayFlags.isDay(DayFlags.Companion.getSATURDAY()), is(true));
     }
 
     @Test
     public void isNotWeekend() throws Exception {
-        DayFlags dayFlags = new DayFlags(DayFlags.WEEKENDS);
+        DayFlags dayFlags = new DayFlags(DayFlags.Companion.getWEEKENDS());
 
-        assertThat(dayFlags.isDay(DayFlags.THURSDAY), is(false));
+        assertThat(dayFlags.isDay(DayFlags.Companion.getTHURSDAY()), is(false));
     }
 
     @Test
     public void isAlways() throws Exception {
-        DayFlags dayFlags = new DayFlags(DayFlags.EVERYDAY);
+        DayFlags dayFlags = new DayFlags(DayFlags.Companion.getEVERYDAY());
 
-        assertThat(dayFlags.isDay(DayFlags.SATURDAY), is(true));
+        assertThat(dayFlags.isDay(DayFlags.Companion.getSATURDAY()), is(true));
     }
 
     @Test
     public void isAlwaysWeekend() throws Exception {
-        DayFlags dayFlags = new DayFlags(DayFlags.EVERYDAY);
+        DayFlags dayFlags = new DayFlags(DayFlags.Companion.getEVERYDAY());
 
-        assertThat(dayFlags.isDay(DayFlags.WEEKENDS), is(true));
+        assertThat(dayFlags.isDay(DayFlags.Companion.getWEEKENDS()), is(true));
     }
 
     @Test
     public void isNever() throws Exception {
-        DayFlags dayFlags = new DayFlags(DayFlags.NEVER);
+        DayFlags dayFlags = new DayFlags(DayFlags.Companion.getNEVER());
 
-        assertThat(dayFlags.isDay(DayFlags.SATURDAY), is(false));
+        assertThat(dayFlags.isDay(DayFlags.Companion.getSATURDAY()), is(false));
     }
 
 }
